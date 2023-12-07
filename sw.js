@@ -75,6 +75,7 @@ self.addEventListener("fetch", function (event) {
     //         return fetch(event.request);
     //     }
     // });
+    // comment out to avoid excess during db
     event.respondWith(
         caches.match(event.request).then((response) => {
             return ( 

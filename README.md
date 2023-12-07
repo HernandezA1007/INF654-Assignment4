@@ -27,14 +27,12 @@ This project is a follow-up to a previous prototype project where we'll be expan
 
 Movie Log home page
 ![movie log home page](./img/movielog.png)
-Mobile view and side-form
 
+Mobile view and side-form
 <p align="center">
     <img src="./img/mobile.png" alt="mobile view" width="400"/>
     <img src="./img/movieform.png" alt="movie form" width="400"/>
 </p>
+
 Contact page
-
 ![contact page](./img/contact.png)
-
-Incomplete
