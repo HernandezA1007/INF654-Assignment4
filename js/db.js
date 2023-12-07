@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, getDocs, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, collection, getDocs, onSnapshot, addDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -34,6 +34,7 @@ const unsub = onSnapshot(collection(db, "movies"), (doc) => {
         }
         if (change.type === "removed") {
             //do something
+            removeMovie(change.doc.id);
         }
     });
 });
@@ -41,7 +42,34 @@ const unsub = onSnapshot(collection(db, "movies"), (doc) => {
 
 /* Dynamic Content - CRUD operations */
 // ADD new movie
-
+const form = document.querySelector("form");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    // const movie = {
+    //     title: form.title.value,
+    //     description: form.description.value,
+    // };
+    // console.log(movie);
+    // addMovie(movie);
+    // form.reset();
+    addDoc(collection(db, "movies"), {
+        title: form.title.value,
+        description: form.description.value
+    }).catch((error) => {
+        console.log(error);
+    });
+    form.title.value = "";
+    form.description.value = "";
+});
 
 // DELETE movie
-
+const movieContainer = document.querySelector(".movies");
+movieContainer.addEventListener("click", (event) => {
+    // console.log(event);
+    if (event.target.tagName === "I") {
+        const id = event.target.getAttribute("data-id");
+        // console.log(id);
+        // deleteMovie(id);
+        deleteDoc(doc(db, "movies", id));
+    }
+});

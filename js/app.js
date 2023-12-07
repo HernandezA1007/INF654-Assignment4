@@ -4,6 +4,8 @@
 // 10 - 26 - 23
 
 /* Service Worker Register */
+// Can delete the service worker by unregistering the service worker in inspect element > applicaton
+// service worker > unregister, can go further by going ALL
 
 /*
 if ("serviceWorker" in navigator) {

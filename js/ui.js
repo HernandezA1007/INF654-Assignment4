@@ -25,3 +25,9 @@ const renderMovie = (data, id) => {
   
     movies.innerHTML += html;
 };
+
+// Remove movie from DOM
+const removeMovie = (id) => {
+    const movie = document.querySelector(`.movie[data-id=${id}]`);
+    movie.remove();
+};
