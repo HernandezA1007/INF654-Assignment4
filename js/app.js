@@ -44,6 +44,7 @@ if ("serviceWorker" in navigator) {
   /* Dynamic Content - Adding, Updating(not yet), Deleting movie entries */
   /* This stores the movies in the localStores (I created a json file to locally storae but decided to just store 
     them in localStorage and we did not cover whether we will use cookies or cache yet) */
+  /*
   let movies = [];
 
   // uses localStorage to load movies
@@ -109,4 +110,4 @@ if ("serviceWorker" in navigator) {
   document.addEventListener('DOMContentLoaded', function() {
     loadMovies();
   });
-  
+*/

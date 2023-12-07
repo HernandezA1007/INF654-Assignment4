@@ -3,9 +3,10 @@
 const dynamicCache = "Dyanmic-cache-v1";
 const staticCache = "Static-cache-v1";
 
-const assets = [
+// renamed index.html to movies.html so the service workers cache doesn't mess with my other projects?
+const assets = [ 
     "/",
-    "/index.html",
+    "/movies.html",
     "/pages/fallback.html",
     "/js/app.js",
     "/js/ui.js",
@@ -15,7 +16,18 @@ const assets = [
     "/img/movie.jpg",
     "/img/movie.png",
     "https://fonts.googleapis.com/icon?family=Material+Icons",
-  ];
+];
+
+// Cache size limit
+const limitCacheSize = (name, size) => {
+    caches.open(name).then(cache => {
+      cache.keys().then(keys => {
+        if (keys.length > size) {
+          cache.delete(keys[0]).then(limitCacheSize(name, size));
+        }
+      });
+    });
+};
 
 self.addEventListener("install", function (event) {
     // fires when the browser install the app
@@ -43,7 +55,7 @@ self.addEventListener("activate", function (event) {
         caches.keys().then((keys) => {
           return Promise.all(
             keys
-              .filter((key) => key !== staticCache)
+              .filter((key) => key !== staticCache && key !== dynamicCache)
               .map((key) => caches.delete(key))
           );
         })
@@ -70,6 +82,7 @@ self.addEventListener("fetch", function (event) {
                 fetch(event.request).then(fetchRes => {
                     return caches.open(dynamicCache).then(cache => {
                         cache.put(event.request.url, fetchRes.clone());
+                        limitCacheSize(dynamicCache, 3);
                         return fetchRes;
                     });
                 })

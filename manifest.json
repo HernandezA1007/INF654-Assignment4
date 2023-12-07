@@ -2,7 +2,7 @@
     "name": "Movie Log",
     "short_name": "ML",
     "description": "Catalog and manage your collection of movies",
-    "start_url": "/index.html",
+    "start_url": "/movies.html",
     "scope": ".",
     "display": "standalone",
     "orientation": "portrait-primary",

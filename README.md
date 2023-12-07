@@ -16,14 +16,25 @@ This project is a follow-up to a previous prototype project where we'll be expan
 
 - HTML, CSS, and JavaScript
 - [Materialize CSS](https://materializecss.com/) - framework
-- [Firebase](https://firebase.google.com/) - database
+- [Firebase](https://firebase.google.com/) - backend and database
 
-## Setup
+## Setup and How to View the Prototype
 
 1. ...
+2. ...
 
 ## Gallery
 
-(insert screenshots)
+Movie Log home page
+![movie log home page](./img/movielog.png)
+Mobile view and side-form
+
+<p align="center">
+    <img src="./img/mobile.png" alt="mobile view" width="400"/>
+    <img src="./img/movieform.png" alt="movie form" width="400"/>
+</p>
+Contact page
+
+![contact page](./img/contact.png)
 
 Incomplete
