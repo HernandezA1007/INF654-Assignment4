@@ -20,19 +20,22 @@ This project is a follow-up to a previous prototype project where we'll be expan
 
 ## Setup and How to View the Prototype
 
-1. ...
-2. ...
+1. Clone the repository using `git clone https://github.com/HernandezA1007/INF654-Assignment4.git` and open the `index.html`.
+2. Navigate through the application using the navigation bar and side menus and interact with application by adding, viewing, and deleting movie entries.
 
 ## Gallery
 
 Movie Log home page
-![movie log home page](./img/movielog.png)
+![movie log home page](./public/img/movielog.png)
 
 Mobile view and side-form
 <p align="center">
-    <img src="./img/mobile.png" alt="mobile view" width="400"/>
-    <img src="./img/movieform.png" alt="movie form" width="400"/>
+    <img src="./public/img/mobile.png" alt="mobile view" width="400"/>
+    <img src="./public/img/movieform.png" alt="movie form" width="400"/>
 </p>
 
 Contact page
-![contact page](./img/contact.png)
+![contact page](./public/img/contact.png)
+
+Firebase database receiving new movie entries
+![firebase collection](./public/img/firebase.png)
