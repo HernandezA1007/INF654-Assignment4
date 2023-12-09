@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
 const renderMovie = (data, id) => {
     const html = `
     <div class="card-panel movie white row" data-id ="${id}">
-              <img src="/img/movie.png" class="responsive-img materialboxed" alt="">
+              <img src="/public/img/movie.png" class="responsive-img materialboxed" alt="">
               <div class="movie-detail">
                   <div class="movie-title">${data.title}</div>
                   <div class="movie-description">${data.description}</div>
@@ -28,6 +28,6 @@ const renderMovie = (data, id) => {
 
 // Remove movie from DOM
 const removeMovie = (id) => {
-    const movie = document.querySelector(`.movie[data-id=${id}]`);
+    const movie = document.querySelector(`.movie[data-id=${id}]`); // id as quotations? 
     movie.remove();
 };

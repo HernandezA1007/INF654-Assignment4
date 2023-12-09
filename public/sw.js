@@ -1,20 +1,20 @@
 /* Service Workers */
 
-const dynamicCache = "Dyanmic-cache-v4"; // changed to v2 for add, v3 for delete, v4
-const staticCache = "Static-cache-v3"; // updated to v2 for DOM, v3 
+const dynamicCache = "Dyanmic-cache-v5"; // changed to v2 for add, v3 for delete, v4 crud, 
+const staticCache = "Static-cache-v4"; // updated to v2 for DOM, v3 host, 
 
-// renamed index.html to movies.html so the service workers cache doesn't mess with my other projects?
+// renamed index.html to movies.html so the service workers cache doesn't mess with my other projects? -> back to index.html
 const assets = [ 
     "/",
-    "/movies.html",
-    "/pages/fallback.html",
-    "/js/app.js",
-    "/js/ui.js",
-    "/js/materialize.min.js",
-    "/css/materialize.min.css",
-    "/css/app.css",
-    "/img/movie.jpg",
-    "/img/movie.png",
+    "/public/index.html",
+    "/public/pages/fallback.html",
+    "/public/js/app.js",
+    "/public/js/ui.js",
+    "/public/js/materialize.min.js",
+    "/public/css/materialize.min.css",
+    "/public/css/app.css",
+    "/public/img/movie.jpg",
+    "/public/img/movie.png",
     "https://fonts.googleapis.com/icon?family=Material+Icons",
 ];
 
@@ -76,19 +76,21 @@ self.addEventListener("fetch", function (event) {
     //     }
     // });
     // comment out to avoid excess during db
-    event.respondWith(
-        caches.match(event.request).then((response) => {
-            return ( 
-                response || 
-                fetch(event.request).then(fetchRes => {
-                    return caches.open(dynamicCache).then(cache => {
-                        cache.put(event.request.url, fetchRes.clone());
-                        limitCacheSize(dynamicCache, 3);
-                        return fetchRes;
-                    });
-                })
-            );
-        })
-        .catch(() => caches.match("/pages/fallback.html"))
-    );
+    if (event.request.url.indexOf("firestore.googleapis.com") === -1) {
+        event.respondWith(
+            caches.match(event.request).then((response) => {
+                return ( 
+                    response || 
+                    fetch(event.request).then(fetchRes => {
+                        return caches.open(dynamicCache).then(cache => {
+                            cache.put(event.request.url, fetchRes.clone());
+                            limitCacheSize(dynamicCache, 15);
+                            return fetchRes;
+                        });
+                    })
+                );
+            })
+            .catch(() => caches.match("/public/pages/fallback.html"))
+        );
+    }
 });

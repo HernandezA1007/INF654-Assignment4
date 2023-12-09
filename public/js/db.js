@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, getDocs, onSnapshot, addDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, collection, getDocs, onSnapshot, addDoc, deleteDoc, doc, enableIndexedDbPersistence } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,6 +25,22 @@ async function getMovies(db) {
     return movieList;
 }
 // async vs sync...
+
+// IndexedDb (stores the data offline)
+/* this will be deprecated in the future -> will need to use FirestoreSettings.cache instead */
+enableIndexedDbPersistence(db).catch((err) => {
+    if (err.code === "failed-precondition") {
+        // Multiple tabs open, persistence can only be enabled
+        // in one tab at a time
+        // console.log("Multiple tabs open, offline persistence failed");
+        console.log("Persistence failed");
+    } else if (err.code === "unimplemented") {
+        // The current browser does not support all of the
+        // features required to enable persistence
+        // console.log("Browser does not support offline persistence");
+        console.log("Persistence is not valid");
+    }
+});
 
 const unsub = onSnapshot(collection(db, "movies"), (doc) => {
     doc.docChanges().forEach((change) => {
