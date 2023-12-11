@@ -39,3 +39,6 @@ Contact page
 
 Firebase database receiving new movie entries
 ![firebase collection](./public/img/firebase.png)
+
+Auth not displaying
+![auth stuff](./public/img/auth.png)

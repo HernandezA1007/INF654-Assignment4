@@ -1,20 +1,20 @@
 /* Service Workers */
 
-const dynamicCache = "Dyanmic-cache-v5"; // changed to v2 for add, v3 for delete, v4 crud, 
-const staticCache = "Static-cache-v4"; // updated to v2 for DOM, v3 host, 
+const dynamicCache = "Dyanmic-cache-v7"; // changed to v2 for add, v3 for delete, v4 crud, v5 for offline, v6 for modal
+const staticCache = "Static-cache-v6"; // updated to v2 for DOM, v3 host, v4 for ?, v5 for modal, 
 
 // renamed index.html to movies.html so the service workers cache doesn't mess with my other projects? -> back to index.html
 const assets = [ 
     "/",
-    "/public/index.html",
-    "/public/pages/fallback.html",
-    "/public/js/app.js",
-    "/public/js/ui.js",
-    "/public/js/materialize.min.js",
-    "/public/css/materialize.min.css",
-    "/public/css/app.css",
-    "/public/img/movie.jpg",
-    "/public/img/movie.png",
+    "/index.html",
+    "/pages/fallback.html",
+    "/js/app.js",
+    "/js/ui.js",
+    "/js/materialize.min.js",
+    "/css/materialize.min.css",
+    "/css/app.css",
+    "/img/movie.jpg",
+    "/img/movie.png",
     "https://fonts.googleapis.com/icon?family=Material+Icons",
 ];
 
@@ -90,7 +90,7 @@ self.addEventListener("fetch", function (event) {
                     })
                 );
             })
-            .catch(() => caches.match("/public/pages/fallback.html"))
+            .catch(() => caches.match("/pages/fallback.html"))
         );
     }
 });

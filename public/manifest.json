@@ -2,7 +2,7 @@
     "name": "Movie Log",
     "short_name": "ML",
     "description": "Catalog and manage your collection of movies",
-    "start_url": "/public/index.html",
+    "start_url": "/index.html",
     "scope": ".",
     "display": "standalone",
     "orientation": "portrait-primary",
@@ -12,37 +12,37 @@
     "lang": "en-US",
     "icons": [
         {
-            "src": "/public/img/movie.png",
+            "src": "/img/movie.png",
             "type": "image/png",
             "sizes": "1024x1024"
         },
         {
-            "src": "/public/img/movie32.png",
+            "src": "/img/movie32.png",
             "type": "image/png",
             "sizes": "32x32"
         },
         {
-            "src": "/public/img/movie64.png",
+            "src": "/img/movie64.png",
             "type": "image/png",
             "sizes": "64x64"
         },
         {
-            "src": "/public/img/movie128.png",
+            "src": "/img/movie128.png",
             "type": "image/png",
             "sizes": "128x128"
         },
         {
-            "src": "/public/img/movie192.png",
+            "src": "/img/movie192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/public/img/movie256.png",
+            "src": "/img/movie256.png",
             "type": "image/png",
             "sizes": "256x256"
         },
         {
-            "src": "/public/img/movie512.png",
+            "src": "/img/movie512.png",
             "type": "image/png",
             "sizes": "512x512"
         }
