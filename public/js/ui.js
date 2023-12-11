@@ -1,6 +1,6 @@
 // Setup materialize components
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM fully loaded and parsed");
+    // console.log("DOM fully loaded and parsed");
     var modals = document.querySelectorAll(".modal");
     M.Modal.init(modals);
 
